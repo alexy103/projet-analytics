@@ -1,6 +1,12 @@
 <script setup lang="ts">
 const cart = useCartStore();
 onMounted(() => {
+  window.umami?.track("checkout_success", {
+    cart_total: cart.totalCart,
+    cart_items_count: cart.cart.length,
+    cart_quantity: cart.cart.reduce((total, item) => total + item.quantity, 0),
+  });
+
   cart.cart.length = 0;
 });
 </script>
