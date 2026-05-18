@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { watch, watchEffect } from "vue";
+
 const route = useRoute();
 
 const { data: product, status, error } = await useProduct(route.params.id);
@@ -12,6 +14,23 @@ watchEffect(() => {
     mainImage.value = product.value.thumbnail;
   }
 });
+
+watch(
+  product,
+  (newProduct) => {
+    if (!newProduct) {
+      return;
+    }
+
+    window.umami?.track("view_product", {
+      product_id: newProduct.id,
+      product_name: newProduct.title,
+      product_category: newProduct.category,
+      product_price: newProduct.price,
+    });
+  },
+  { immediate: true },
+);
 </script>
 
 <template>

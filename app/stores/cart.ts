@@ -29,6 +29,13 @@ export const useCartStore = defineStore("cart", () => {
     } else {
       cart.value = [...cart.value, { ...product, quantity }];
     }
+
+    window.umami?.track("add_to_cart", {
+      product_id: product.id,
+      product_name: product.title,
+      product_category: product.category,
+      product_price: product.price,
+    });
   }
 
   function changeQuantity(product: Product, quantity: number) {
