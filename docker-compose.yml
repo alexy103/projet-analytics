@@ -1,4 +1,12 @@
 services:
+  nuxt:
+    container_name: nuxtapp
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4000:3000"
+
   adminer:
     image: adminer
     restart: unless-stopped
@@ -41,14 +49,6 @@ services:
       - pg-data:/var/lib/postgresql
     ports:
       - "5432:5432"
-
-  nuxt:
-    container_name: nuxtapp
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "4000:3000"
 
   umami:
     image: ghcr.io/umami-software/umami:latest
