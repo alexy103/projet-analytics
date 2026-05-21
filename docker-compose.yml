@@ -11,11 +11,6 @@ x-environment: &default-environment
   GLITCHTIP_ENABLE_DUCKDB: "False" # Set to True to enable cold storage archival
   # PORT: 8000 # If changing, change the web service port too
 
-  ## To reduce RAM usage (targeting 256-512 MB), consider disabling:
-  # VALKEY_URL: "" # Disable Valkey, use Postgres for task queue and cache
-  # GLITCHTIP_ENABLE_LOGS: "False" # Disable log ingestion
-  # GLITCHTIP_ENABLE_UPTIME: "False" # Disable uptime monitoring
-
 x-depends_on: &default-depends_on
   - postgres
   - valkey # Remove when disabling Valkey
