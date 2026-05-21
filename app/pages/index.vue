@@ -1,5 +1,13 @@
 <script setup lang="ts">
+import { onMounted } from "vue";
+import * as Sentry from "@sentry/vue";
+
 const { products, status, error } = useProducts();
+
+onMounted(() => {
+  Sentry.captureMessage("Something went wrong");
+  Sentry.captureException(new Error("Test GlitchTip depuis Nuxt"));
+});
 </script>
 
 <template>
