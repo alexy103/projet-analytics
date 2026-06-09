@@ -57,7 +57,15 @@ Grâce aux breadcrumbs, le développeur sait exactement ce que l'utilisateur a f
 
 Umami a également été intégré au projet, permettant de récupérer des données liées à la navigation des utilisateurs.
 
-On peut voir sur le dashboard différentes informations utiles, telles que le nombre d'événements déclenchés et le nombre de visites. Ce graphique n'est pas lié au tunnel d'achat, il répertorie uniquement tous les événements.
+Ci-dessous le dashboard Umami, qui affiche plusieurs informations comme le nombre de visiteurs uniques, le nombre total de visites, ou encore le taux de rebond.
+
+Ici, on voit que le taux de rebond est de 33%, ce qui pourrait indiquer des soucis de conception au sein de l'application, comme une erreur chez certains utilisateurs ou une page d'accueil très peu attractive.
+
+![Custom events](screenshots/Umami0.png)
+
+Sur le dashboard des événements, on peut voir différentes informations utiles, telles que le nombre d'événements déclenchés et le nombre de visites. Ce graphique n'est pas lié au tunnel d'achat, il répertorie uniquement tous les événements.
+
+#### Événements personnalisés
 
 ![Custom events](screenshots/Umami1.png)
 
