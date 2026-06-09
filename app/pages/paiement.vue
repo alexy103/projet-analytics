@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { onMounted, ref } from "vue";
+import { useRouter } from "nuxt/app";
+import * as Sentry from "@sentry/vue";
+
 const router = useRouter();
 const form = ref({
   cardNumber: "",
@@ -15,9 +19,36 @@ function validate() {
   if (!form.value.cvv) errors.value.cvv = "Le CVV est requis";
   return Object.keys(errors.value).length === 0;
 }
-function onSubmit() {
-  if (validate()) {
+
+onMounted(() => {
+  const transaction = Sentry.startInactiveSpan({
+    name: "checkout-confirmation-load",
+    op: "page.load",
+  });
+
+  setTimeout(() => {
+    transaction.end();
+  }, 0);
+});
+
+async function onSubmit() {
+  if (!validate()) return;
+
+  try {
+    await new Promise<void>((resolve, reject) => {
+      if (Math.random() < 0.33) {
+        reject(
+          new TypeError("Payment gateway timeout: charge_id is undefined"),
+        );
+      } else {
+        resolve();
+      }
+    });
+
     router.push("/confirmation");
+  } catch (error) {
+    Sentry.captureException(error);
+    errors.value.cardNumber = "Une erreur est survenue, veuillez réessayer.";
   }
 }
 </script>

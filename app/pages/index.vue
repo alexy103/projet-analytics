@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { onMounted } from "vue";
+import * as Sentry from "@sentry/vue";
+
 const { products, status, error } = useProducts();
 </script>
 

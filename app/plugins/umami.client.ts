@@ -2,10 +2,10 @@ export default defineNuxtPlugin(() => {
   const script = document.createElement("script");
 
   script.defer = true;
-  script.src = "http://localhost:4000/script.js";
+  script.src = "http://localhost:3000/script.js";
   script.setAttribute(
     "data-website-id",
-    "bffacb7c-a594-4c3c-bcfe-c44faa50b1b0",
+    "f3276f17-e9d7-4235-93a2-6609febb6f24",
   );
 
   document.head.appendChild(script);
