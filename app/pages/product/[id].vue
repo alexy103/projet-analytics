@@ -15,22 +15,20 @@ watchEffect(() => {
   }
 });
 
-watch(
-  product,
-  (newProduct) => {
-    if (!newProduct) {
+onMounted(() => {
+  setTimeout(() => {
+    if (!product.value) {
       return;
     }
 
     window.umami?.track("view_product", {
-      product_id: newProduct.id,
-      product_name: newProduct.title,
-      product_category: newProduct.category,
-      product_price: newProduct.price,
+      product_id: product.value.id,
+      product_name: product.value.title,
+      product_category: product.value.category,
+      product_price: product.value.price,
     });
-  },
-  { immediate: true },
-);
+  }, 500);
+});
 </script>
 
 <template>
