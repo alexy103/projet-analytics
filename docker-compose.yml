@@ -47,8 +47,6 @@ services:
     restart: unless-stopped
     volumes:
       - pg-data:/var/lib/postgresql
-    ports:
-      - "5432:5432"
 
   umami:
     image: ghcr.io/umami-software/umami:latest
@@ -61,7 +59,7 @@ services:
       umami-db:
         condition: service_healthy
     init: true
-    restart: always
+    restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "curl http://localhost:3000/api/heartbeat"]
       interval: 5s
@@ -76,7 +74,7 @@ services:
       POSTGRES_PASSWORD: umami
     volumes:
       - umami-db-data:/var/lib/postgresql/data
-    restart: always
+    restart: unless-stopped
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
       interval: 5s
