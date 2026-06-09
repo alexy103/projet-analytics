@@ -14,6 +14,10 @@ docker compose up --build -d
 
 Si besoin, lors de la configuration de GlitchTip, vous devez copier le DSN fourni par l'application vers le fichier de configuration de GlitchTip (app/plugins/glitchtip.client.ts).
 
+Pour Umami, il faut créer un nouveau site depuis l'interface web (:3000) et adapter l'ID du site dans app/plugins/umami.client.ts.
+
+![Umami Config Example](screenshots/Umami6.png)
+
 ## Explications du projet initial
 
 - Catalogue de produits avec filtrage par catégorie
@@ -50,8 +54,8 @@ La simulation de panne dans paiement.vue consiste en une promesse rejetée aléa
 
 Grâce aux breadcrumbs, le développeur sait exactement ce que l'utilisateur a fait avant le crash. Il identifie que l'erreur survient lors du submit du formulaire de paiement et peut corriger la gestion asynchrone du gateway de paiement.
 
-![Custom events](screenshots/Glitchtip1.png)
-![Custom events](screenshots/Glitchtip2.png)
+![GlitchTip](screenshots/Glitchtip1.png)
+![GlitchTip](screenshots/Glitchtip2.png)
 
 ## Intégration Umami
 
